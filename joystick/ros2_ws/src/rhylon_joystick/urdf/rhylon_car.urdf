@@ -45,9 +45,30 @@
       <material name="amber"/>
     </visual>
     <visual>
-      <origin xyz="0 0 0.020" rpy="0 0 0"/>
+      <origin xyz="0.016 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.010 0.012 0.006"/>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="-0.016 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
       </geometry>
       <material name="chalk"/>
     </visual>
@@ -62,9 +83,30 @@
       <material name="amber"/>
     </visual>
     <visual>
-      <origin xyz="0 0 0.020" rpy="0 0 0"/>
+      <origin xyz="0.016 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.010 0.012 0.006"/>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="-0.016 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
       </geometry>
       <material name="chalk"/>
     </visual>
@@ -79,9 +121,30 @@
       <material name="amber"/>
     </visual>
     <visual>
-      <origin xyz="0 0 0.020" rpy="0 0 0"/>
+      <origin xyz="0.016 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.010 0.012 0.006"/>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="-0.016 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
       </geometry>
       <material name="chalk"/>
     </visual>
@@ -96,9 +159,30 @@
       <material name="amber"/>
     </visual>
     <visual>
-      <origin xyz="0 0 0.020" rpy="0 0 0"/>
+      <origin xyz="0.016 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.010 0.012 0.006"/>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="-0.016 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.018 0.010 0.006"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
+      </geometry>
+      <material name="chalk"/>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.006 0.010 0.018"/>
       </geometry>
       <material name="chalk"/>
     </visual>
