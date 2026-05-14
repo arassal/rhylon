@@ -126,6 +126,10 @@ h2 {
   margin-bottom: 18px;
 }
 
+.command-row {
+  grid-template-columns: 1fr;
+}
+
 .status-card,
 .joystick-panel,
 .motors-panel {
@@ -212,6 +216,10 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.telemetry-grid-wide {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .telemetry-grid div {
@@ -449,6 +457,10 @@ h2 {
   .dashboard,
   .topbar {
     grid-template-columns: 1fr;
+  }
+
+  .telemetry-grid-wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

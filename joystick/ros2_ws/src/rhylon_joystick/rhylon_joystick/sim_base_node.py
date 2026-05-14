@@ -156,6 +156,56 @@ class RhylonSimBase(Node):
             marker.color.b = 0.25
             marker.text = f"{label} {mix:+.2f}"
             marker_array.markers.append(marker)
+
+        arrow = Marker()
+        arrow.header.stamp = stamp
+        arrow.header.frame_id = "base_link"
+        arrow.ns = "rhylon_cmd"
+        arrow.id = 100
+        arrow.type = Marker.ARROW
+        arrow.action = Marker.ADD
+        arrow.pose.orientation.w = 1.0
+        arrow.scale.x = 0.03
+        arrow.scale.y = 0.05
+        arrow.scale.z = 0.06
+        arrow.color.a = 0.95
+        arrow.color.r = 0.25
+        arrow.color.g = 0.85
+        arrow.color.b = 0.95
+        speed = math.hypot(self.cmd.linear.x, self.cmd.linear.y)
+        arrow.points = []
+        start = type(marker.pose.position)()
+        start.x = 0.0
+        start.y = 0.0
+        start.z = 0.08
+        end = type(marker.pose.position)()
+        end.x = self.cmd.linear.x * 0.6
+        end.y = self.cmd.linear.y * 0.6
+        end.z = 0.08 + min(0.18, abs(self.cmd.angular.z) * 0.05 + speed * 0.03)
+        arrow.points.extend([start, end])
+        marker_array.markers.append(arrow)
+
+        twist_label = Marker()
+        twist_label.header.stamp = stamp
+        twist_label.header.frame_id = "base_link"
+        twist_label.ns = "rhylon_cmd"
+        twist_label.id = 101
+        twist_label.type = Marker.TEXT_VIEW_FACING
+        twist_label.action = Marker.ADD
+        twist_label.pose.position.x = 0.0
+        twist_label.pose.position.y = 0.0
+        twist_label.pose.position.z = 0.24
+        twist_label.scale.z = 0.05
+        twist_label.color.a = 1.0
+        twist_label.color.r = 0.85
+        twist_label.color.g = 0.95
+        twist_label.color.b = 1.0
+        twist_label.text = (
+            f"cmd vx={self.cmd.linear.x:+.2f} "
+            f"vy={self.cmd.linear.y:+.2f} "
+            f"wz={self.cmd.angular.z:+.2f}"
+        )
+        marker_array.markers.append(twist_label)
         self.marker_pub.publish(marker_array)
 
     def update(self) -> None:

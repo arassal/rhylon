@@ -10,6 +10,7 @@ const state = {
   estop: false,
   joystick: { x: 0, y: 0, twist: 0 },
   motors: { fl: 0, fr: 0, rl: 0, rr: 0 },
+  cmdVel: { linear_x: 0, linear_y: 0, angular_z: 0 },
   socket: null
 };
 
@@ -27,6 +28,9 @@ const elements = {
   inputX: document.getElementById("inputX"),
   inputY: document.getElementById("inputY"),
   inputTwist: document.getElementById("inputTwist"),
+  cmdLinearX: document.getElementById("cmdLinearX"),
+  cmdLinearY: document.getElementById("cmdLinearY"),
+  cmdAngularZ: document.getElementById("cmdAngularZ"),
   modeButtons: Array.from(document.querySelectorAll(".mode-button"))
 };
 
@@ -74,6 +78,9 @@ function renderTelemetry() {
   elements.inputX.textContent = state.joystick.x.toFixed(2);
   elements.inputY.textContent = state.joystick.y.toFixed(2);
   elements.inputTwist.textContent = state.joystick.twist.toFixed(2);
+  elements.cmdLinearX.textContent = state.cmdVel.linear_x.toFixed(2);
+  elements.cmdLinearY.textContent = state.cmdVel.linear_y.toFixed(2);
+  elements.cmdAngularZ.textContent = state.cmdVel.angular_z.toFixed(2);
   elements.modeDescription.textContent = modeProfiles[state.mode].description;
   elements.modeBadge.textContent = state.mode;
 
@@ -166,6 +173,7 @@ function connectSocket() {
     state.mode = data.mode || state.mode;
     state.estop = Boolean(data.estop);
     state.motors = data.motors || state.motors;
+    state.cmdVel = data.cmd_vel || state.cmdVel;
     elements.simState.textContent = data.connection === "online" ? "Bridge Online" : "Bridge Sync";
     render();
   });

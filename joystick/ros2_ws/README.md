@@ -21,6 +21,13 @@ ros2 launch rhylon_joystick demo.launch.py
 
 Then open `http://localhost:8080`.
 
+The launch file already starts the full demo in one command:
+
+- web joystick bridge
+- simulated base
+- robot state publisher
+- RViz
+
 ## Nav2 Compatibility
 
 This demo is aligned with the interfaces Nav2 expects:

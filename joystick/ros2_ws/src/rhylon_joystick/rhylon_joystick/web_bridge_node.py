@@ -39,6 +39,7 @@ class RhylonWebBridge(Node):
         self.active_websocket: WebSocket | None = None
         self.mode = "D"
         self.estop = False
+        self.latest_cmd = {"linear_x": 0.0, "linear_y": 0.0, "angular_z": 0.0}
 
         self.get_logger().info(f"Rhylon web bridge serving on port {self.web_port}")
 
@@ -49,7 +50,9 @@ class RhylonWebBridge(Node):
         self.latest_motor_state = data
 
     def publish_stop(self) -> None:
-        self.cmd_pub.publish(Twist())
+        msg = Twist()
+        self.latest_cmd = {"linear_x": 0.0, "linear_y": 0.0, "angular_z": 0.0}
+        self.cmd_pub.publish(msg)
 
     def publish_estop(self, enabled: bool) -> None:
         self.estop = enabled
@@ -67,6 +70,11 @@ class RhylonWebBridge(Node):
         msg.angular.z = float(twist) * profile["angular"]
         if self.estop or self.mode == "N":
             msg = Twist()
+        self.latest_cmd = {
+            "linear_x": float(msg.linear.x),
+            "linear_y": float(msg.linear.y),
+            "angular_z": float(msg.angular.z),
+        }
         self.cmd_pub.publish(msg)
 
     def get_state(self) -> dict[str, Any]:
@@ -80,6 +88,7 @@ class RhylonWebBridge(Node):
                 "rl": self.latest_motor_state[2],
                 "rr": self.latest_motor_state[3],
             },
+            "cmd_vel": dict(self.latest_cmd),
         }
 
 
