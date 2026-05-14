@@ -34,7 +34,7 @@ See [ros2_ws/README.md](/home/alexander/rhylon/joystick/ros2_ws/README.md) for t
 
 ## What it demonstrates
 
-- HomeGenie-style full-screen joystick workflow adapted into a standalone web UI
+- full-screen joystick workflow adapted into a standalone web UI
 - Drive modes: `Neutral`, `Drive`, `Sport`, `Reverse`
 - E-stop gating that forces all four motor outputs to zero
 - Simulated connection boot, periodic link drop, and recovery states

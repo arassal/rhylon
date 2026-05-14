@@ -1,5 +1,5 @@
 Assembly,Category,Qty,Unit,Item,Specification / Selection,Procurement Type,Required,Unit Price (source snapshot),Example Buy / Download Link,Notes / Basis
-Standalone Arm,Printable asset,1,pack,Robotic Arm STL pack,Official STL pack; 24 STL parts plus README/HISTORY,Download,Yes,,https://homegenie.it/mini/1.2/examples/mr-robot/download/robot-arm-v2-04-STL.zip,Official HomeGenie project files
+Standalone Arm,Printable asset,1,pack,Robotic Arm STL pack,Official STL pack; 24 STL parts plus README/HISTORY,Download,Yes,,,Official project files
 Standalone Arm,Controller board,1,ea,ESP32-S3 Zero-M,Waveshare ESP32-S3-Zero-M,Buy,Yes,$5.49-$7.99,https://www.waveshare.com/esp32-s3-zero.htm?sku=25517&aff_id=110491,Project page directly links this board
 Standalone Arm,Arm motors,4,ea,MG90S 180-degree micro servo,"Standard positioning servo, metal gear preferred",Buy,Yes,$5.49 each,https://protosupplies.com/product/servo-motor-micro-mg90s/,Project explicitly calls for 4x MG90S
 Standalone Arm,Fastener,10,ea,"M2 screw, 12 mm",Arm fasteners,Buy,Yes,Varies,https://www.mcmaster.com/products/socket-head-cap-screws/thread-size~m2/,From arm hardware list

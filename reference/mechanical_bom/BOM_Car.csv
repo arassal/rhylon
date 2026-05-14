@@ -1,6 +1,6 @@
 Assembly,Category,Qty,Unit,Item,Specification / Selection,Procurement Type,Required,Unit Price (source snapshot),Example Buy / Download Link,Notes / Basis
-Car Only,Printable asset,1,pack,FPV RC Car STL pack,Official STL pack; 16 files in archive,Download,Yes,,https://homegenie.it/mini/1.2/examples/fpv-rc-car/download/hg-smart-car-v3-01-STL.zip,Official HomeGenie project files
-Car Only,PCB fabrication asset,1,pack,Motor controller shield Gerber pack,Official Gerber package,Fabricate,Yes,,https://homegenie.it/mini/1.2/examples/fpv-rc-car/download/motor-controller-shield-02.zip,Official HomeGenie project files
+Car Only,Printable asset,1,pack,FPV RC Car STL pack,Official STL pack; 16 files in archive,Download,Yes,,,Official project files
+Car Only,PCB fabrication asset,1,pack,Motor controller shield Gerber pack,Official Gerber package,Fabricate,Yes,,,Official project files
 Car Only,Controller board,1,ea,ESP32-S3 Zero-M,Motion controller board,Buy,Yes,$5.49-$7.99,https://www.waveshare.com/esp32-s3-zero.htm?sku=25517&aff_id=110491,Project page directly links this board
 Car Only,Camera board,1,ea,ESP32-S3-CAM board,OV3660 or equivalent camera option,Buy,Yes,$16.99-$19.99,https://www.waveshare.com/product/esp32-s3-cam-ov5640.htm,Use 75 mm FFC if arm is not installed
 Car Only,FFC cable,1,ea,24-pin 0.5 mm FFC camera cable,75 mm length for car-only build,Buy,Yes,,,Project explicitly says 75 mm without arm; source an exact 24-pin 0.5 mm cable locally

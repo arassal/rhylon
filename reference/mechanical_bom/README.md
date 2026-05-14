@@ -1,6 +1,6 @@
-# HomeGenie Reference BOM
+# Mechanical Reference BOM
 
-This folder contains reference purchasing and parts data derived from publicly available HomeGenie Mini project materials.
+This folder contains reference purchasing and parts data derived from publicly available third-party project materials.
 
 It is included here as design reference only.
 
@@ -10,7 +10,7 @@ It is included here as design reference only.
 
 ## Included Files
 
-- `homegenie_mechanical_buy_list_2026-05-13.xlsx`: main spreadsheet workbook
+- `mechanical_buy_list_2026-05-13.xlsx`: main spreadsheet workbook
 - `BOM_Full.csv`: combined buy list
 - `BOM_Car.csv`: RC car-specific items
 - `BOM_Arm.csv`: robotic arm-specific items
@@ -21,6 +21,6 @@ It is included here as design reference only.
 
 ## Provenance
 
-The content in this folder was assembled from the HomeGenie ecosystem reference material discussed earlier, especially the HomeGenie Mini examples and related downloadable assets.
+The content in this folder was assembled from the external reference material discussed earlier, especially the downloadable reference assets.
 
 Use this as a reference dataset, then adjust quantities, vendors, motor choices, batteries, control boards, and fasteners to match the actual Rhylon design once that hardware is locked.
