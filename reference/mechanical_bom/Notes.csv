@@ -1,9 +1,9 @@
 Field,Value
-Prepared for,Integrated FPV RC Car + Robotic Arm reference build
+Prepared for,FPV RC Car reference build
 Prepared on,2026-05-13
 Important scope note,"This BOM is grounded in the official project pages and files. Where the project does not specify an exact commercial SKU, I used a clearly labeled current example source or marked the row as an engineering inference."
 Most important inference,"The motor shield BOM is only partially documented in the reference material. The shield definitely requires 2-pin power connectors, 3-pin servo headers, bulk capacitors, 2x 9-pin female headers, and a jumper. Exact connector families and assembly choices are left to the builder."
 Wheel ambiguity,"The STL pack includes wheel-related print files, but the published hardware list still explicitly specifies a bought 48 mm mecanum wheel set. This workbook follows the published hardware list for the procurement BOM."
-Camera cable note,The car page explicitly says 75 mm FFC for car-only and 200 mm FFC when the arm is installed.
+Camera cable note,Use a 75 mm FFC cable for the car-only build.
 Battery note,"The example build uses two separate 6V packs. If you redesign power distribution, update the BOM and the shield operating mode accordingly."
 Commercial use note,The printed project files are published under CC BY-NC-SA per the README files in the official downloads. Verify license fit before commercial reproduction.

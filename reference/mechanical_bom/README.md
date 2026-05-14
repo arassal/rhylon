@@ -1,23 +1,23 @@
 # Mechanical Reference BOM
 
-This folder contains reference purchasing and parts data derived from publicly available third-party project materials.
+This folder contains reference purchasing and parts data for the RC car build only.
 
 It is included here as design reference only.
 
 - It is **not** the primary Rhylon project definition.
 - It is **not** a final Rhylon production BOM.
-- It is a useful starting point for RC car, wheel-drive, servo, and optional arm hardware planning.
+- It is a useful starting point for RC car, wheel-drive, and control hardware planning.
 
 ## Included Files
 
-- `mechanical_buy_list_2026-05-13.xlsx`: main spreadsheet workbook
 - `BOM_Full.csv`: combined buy list
 - `BOM_Car.csv`: RC car-specific items
-- `BOM_Arm.csv`: robotic arm-specific items
 - `Printed_Parts.csv`: printable/mechanical printed components
 - `Sources.csv`: vendor and source links
 - `Notes.csv`: assumptions and caveats
 - `README_source.md`: source-side generation notes from the original local BOM workspace
+
+The CSV files are the current authoritative version in this repo.
 
 ## Provenance
 

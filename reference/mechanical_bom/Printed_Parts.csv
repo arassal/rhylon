@@ -1,26 +1,4 @@
 Project,File Name,Type,Count / Qty Hint,Source Link,Notes
-Robotic Arm,robot-arm-v2-horn-base-02.stl,STL,1,,Print from official arm pack
-Robotic Arm,robot-arm-v2-bracket-right-02.stl,STL,1,,
-Robotic Arm,robot-arm-v2-housing-left-02.stl,STL,1,,
-Robotic Arm,robot-arm-v2-housing-right-02.stl,STL,1,,
-Robotic Arm,robot-arm-v2-bracket-right-upper-02.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-base-bottom-03.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-gear-left-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-gear-right-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-left-bottom-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-right-bottom-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-bar-left-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-bar-right-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-gear-horn-03.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-left-top-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-right-top-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-base-top-03.stl,STL,1,,
-Robotic Arm,robot-arm-v2-gripper-housing-03.stl,STL,1,,
-Robotic Arm,robot-arm-v2-fpv-camera-mount-03.stl,STL,1,,Optional if fitting FPV camera mount
-Robotic Arm,robot-arm-v2-horn-base-cover-02.stl,STL,1,,
-Robotic Arm,robot-arm-v2-bracket-right-upper-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-base-bracket-01.stl,STL,1,,
-Robotic Arm,robot-arm-v2-bracket-left-02.stl,STL,1,,
 FPV RC Car,hg-smart-car-cover-V3-01.stl,STL,1,,
 FPV RC Car,hg-smart-car-base-V2-01.stl,STL,1,,
 FPV RC Car,hg-smart-car-servo-bracket-V2-01.stl,STL,4,,Use 4 copies for 4 drive servos
