@@ -1,0 +1,548 @@
+:root {
+  --bg: #08111f;
+  --panel: rgba(11, 23, 40, 0.78);
+  --panel-strong: rgba(8, 19, 33, 0.92);
+  --border: rgba(132, 160, 197, 0.22);
+  --text: #e7f0fb;
+  --muted: #9fb1c9;
+  --accent: #43c6ac;
+  --accent-2: #f8ffae;
+  --danger: #ff5f57;
+  --warning: #ffbe3d;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Barlow", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(67, 198, 172, 0.16), transparent 24rem),
+    radial-gradient(circle at top right, rgba(248, 255, 174, 0.12), transparent 26rem),
+    linear-gradient(180deg, #0d1b2f 0%, #07101d 52%, #04090f 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+}
+
+.app-shell {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.topbar,
+.status-row,
+.dashboard {
+  display: grid;
+  gap: 18px;
+}
+
+.topbar {
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.02;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+}
+
+.estop-button,
+.status-card,
+.joystick-panel,
+.motors-panel {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.estop-button {
+  appearance: none;
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(255, 95, 87, 0.94), rgba(155, 20, 28, 0.94));
+  color: white;
+  padding: 18px 22px;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.estop-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 40px rgba(255, 95, 87, 0.25);
+}
+
+.estop-button.active {
+  background: linear-gradient(145deg, rgba(117, 14, 22, 0.98), rgba(56, 5, 8, 0.98));
+  filter: saturate(0.8);
+}
+
+.estop-label,
+.estop-detail {
+  display: block;
+}
+
+.estop-label {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.estop-detail {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  opacity: 0.86;
+}
+
+.status-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.status-card,
+.joystick-panel,
+.motors-panel {
+  background: var(--panel);
+  border-radius: var(--radius);
+}
+
+.status-card {
+  padding: 18px 20px;
+}
+
+.card-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.status-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.dot-pending {
+  background: var(--warning);
+  box-shadow: 0 0 0 8px rgba(255, 190, 61, 0.14);
+}
+
+.dot-online {
+  background: var(--accent);
+  box-shadow: 0 0 0 8px rgba(67, 198, 172, 0.14);
+}
+
+.dot-offline {
+  background: var(--danger);
+  box-shadow: 0 0 0 8px rgba(255, 95, 87, 0.14);
+}
+
+.status-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.mode-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mode-button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.mode-button.active {
+  background: linear-gradient(120deg, rgba(67, 198, 172, 0.22), rgba(248, 255, 174, 0.22));
+  border-color: rgba(248, 255, 174, 0.32);
+}
+
+.mode-button:hover {
+  transform: translateY(-1px);
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.telemetry-grid div {
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.telemetry-grid span,
+.wheel-header span,
+.wheel-direction,
+.panel-copy,
+#connectionSubtext,
+#modeDescription {
+  color: var(--muted);
+}
+
+.telemetry-grid span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.telemetry-grid strong,
+.wheel-header strong,
+.mode-badge,
+.sim-state,
+#mixFormula {
+  font-family: "Space Mono", monospace;
+}
+
+.dashboard {
+  grid-template-columns: minmax(320px, 1fr) minmax(420px, 1.05fr);
+}
+
+.joystick-panel,
+.motors-panel {
+  padding: 20px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.panel-copy {
+  max-width: 28rem;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.joystick {
+  position: relative;
+  min-height: 560px;
+  border-radius: calc(var(--radius) + 10px);
+  background:
+    radial-gradient(circle at center, rgba(67, 198, 172, 0.11), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent),
+    var(--panel-strong);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  touch-action: none;
+}
+
+.joystick-grid,
+.joystick-crosshair,
+.joystick-handle {
+  position: absolute;
+}
+
+.joystick-grid {
+  inset: 10%;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.joystick-crosshair {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.joystick-crosshair.horizontal {
+  width: 78%;
+  height: 1px;
+}
+
+.joystick-crosshair.vertical {
+  width: 1px;
+  height: 78%;
+}
+
+.joystick-handle {
+  left: 50%;
+  top: 50%;
+  width: 116px;
+  height: 116px;
+  margin-left: -58px;
+  margin-top: -58px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.28), transparent 34%),
+    linear-gradient(145deg, rgba(67, 198, 172, 0.92), rgba(5, 75, 94, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.34),
+    0 0 0 18px rgba(67, 198, 172, 0.08);
+  transition: transform 100ms linear, box-shadow 180ms ease;
+}
+
+.joystick.dragging .joystick-handle {
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.45),
+    0 0 0 22px rgba(67, 198, 172, 0.14);
+}
+
+.joystick.estop .joystick-handle {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), transparent 34%),
+    linear-gradient(145deg, rgba(145, 35, 35, 0.96), rgba(71, 13, 13, 0.96));
+}
+
+.joystick-caption {
+  position: absolute;
+  color: rgba(231, 240, 251, 0.58);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.joystick-caption.top {
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joystick-caption.bottom {
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.joystick-caption.left {
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.joystick-caption.right {
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.vehicle-layout {
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+.chassis {
+  position: relative;
+  width: min(100%, 620px);
+  min-height: 500px;
+  padding: 26px;
+  border-radius: 36px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    rgba(4, 12, 23, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.chassis::before {
+  content: "";
+  position: absolute;
+  inset: 19% 22%;
+  border-radius: 36px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(67, 198, 172, 0.06), rgba(248, 255, 174, 0.03));
+}
+
+.chassis-center {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.mode-badge,
+.sim-state {
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mode-badge {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.sim-state {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.wheel {
+  position: absolute;
+  z-index: 2;
+  width: 220px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(11, 23, 40, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.wheel-fl { top: 18px; left: 18px; }
+.wheel-fr { top: 18px; right: 18px; }
+.wheel-rl { bottom: 18px; left: 18px; }
+.wheel-rr { bottom: 18px; right: 18px; }
+
+.wheel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.wheel-header strong {
+  font-size: 1rem;
+}
+
+.wheel-bar {
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.wheel-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #49dcb1, #f8ffae);
+  transition: width 90ms linear, filter 180ms ease, background 180ms ease;
+}
+
+.wheel-fill.reverse {
+  background: linear-gradient(90deg, #ffbe3d, #ff6d57);
+}
+
+.wheel-fill.idle {
+  filter: grayscale(0.72) brightness(0.7);
+}
+
+.wheel-direction {
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+}
+
+.formula-strip {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent-2);
+}
+
+#mixFormula {
+  display: block;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+@media (max-width: 1100px) {
+  .topbar,
+  .status-row,
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .joystick,
+  .vehicle-layout {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .joystick {
+    min-height: 400px;
+  }
+
+  .vehicle-layout {
+    min-height: 620px;
+  }
+
+  .wheel {
+    width: calc(50% - 20px);
+    min-width: 140px;
+  }
+
+  .panel-header {
+    flex-direction: column;
+  }
+}

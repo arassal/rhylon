@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rhylon Joystick PoC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Standalone Web PoC</p>
+        <h1>4-Wheel Drive Joystick Console</h1>
+      </div>
+      <button id="estopButton" class="estop-button" type="button" aria-pressed="false">
+        <span class="estop-label">E-STOP</span>
+        <span id="estopDetail" class="estop-detail">Motors armed</span>
+      </button>
+    </header>
+
+    <section class="status-row">
+      <div class="status-card">
+        <span class="card-label">Connection</span>
+        <div class="status-main">
+          <span id="connectionDot" class="dot dot-pending"></span>
+          <strong id="connectionText">Booting simulator...</strong>
+        </div>
+        <p id="connectionSubtext">Initializing control loop and heartbeat.</p>
+      </div>
+
+      <div class="status-card">
+        <span class="card-label">Drive Mode</span>
+        <div class="mode-buttons" role="group" aria-label="Drive modes">
+          <button class="mode-button" data-mode="N" type="button">Neutral</button>
+          <button class="mode-button active" data-mode="D" type="button">Drive</button>
+          <button class="mode-button" data-mode="S" type="button">Sport</button>
+          <button class="mode-button" data-mode="R" type="button">Reverse</button>
+        </div>
+        <p id="modeDescription">Balanced throttle curve for normal driving.</p>
+      </div>
+
+      <div class="status-card telemetry-card">
+        <span class="card-label">Live Input</span>
+        <div class="telemetry-grid">
+          <div>
+            <span>X</span>
+            <strong id="inputX">0.00</strong>
+          </div>
+          <div>
+            <span>Y</span>
+            <strong id="inputY">0.00</strong>
+          </div>
+          <div>
+            <span>Throttle</span>
+            <strong id="inputThrottle">0%</strong>
+          </div>
+          <div>
+            <span>Turn Bias</span>
+            <strong id="inputTurn">0%</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="dashboard">
+      <section class="joystick-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Input Surface</p>
+            <h2>Touch or drag the stick</h2>
+          </div>
+          <p class="panel-copy">Forward increases throttle. Left/right mixes the wheel outputs to simulate skid steering.</p>
+        </div>
+
+        <div id="joystick" class="joystick" aria-label="Joystick input area">
+          <div class="joystick-grid"></div>
+          <div class="joystick-crosshair horizontal"></div>
+          <div class="joystick-crosshair vertical"></div>
+          <div id="joystickHandle" class="joystick-handle"></div>
+          <div class="joystick-caption top">Forward</div>
+          <div class="joystick-caption bottom">Reverse</div>
+          <div class="joystick-caption left">Left</div>
+          <div class="joystick-caption right">Right</div>
+        </div>
+      </section>
+
+      <section class="motors-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Motor Mixer</p>
+            <h2>Wheel output visualization</h2>
+          </div>
+          <p class="panel-copy">Each wheel shows signed power and direction after mode scaling, steering mix, simulated link quality, and e-stop gating.</p>
+        </div>
+
+        <div class="vehicle-layout">
+          <div class="chassis">
+            <div class="chassis-center">
+              <span id="modeBadge" class="mode-badge">D</span>
+              <span id="simState" class="sim-state">Connected</span>
+            </div>
+
+            <article class="wheel wheel-fl">
+              <div class="wheel-header">
+                <span>Front Left</span>
+                <strong id="label-fl">0%</strong>
+              </div>
+              <div class="wheel-bar"><div id="bar-fl" class="wheel-fill"></div></div>
+              <p id="dir-fl" class="wheel-direction">Idle</p>
+            </article>
+
+            <article class="wheel wheel-fr">
+              <div class="wheel-header">
+                <span>Front Right</span>
+                <strong id="label-fr">0%</strong>
+              </div>
+              <div class="wheel-bar"><div id="bar-fr" class="wheel-fill"></div></div>
+              <p id="dir-fr" class="wheel-direction">Idle</p>
+            </article>
+
+            <article class="wheel wheel-rl">
+              <div class="wheel-header">
+                <span>Rear Left</span>
+                <strong id="label-rl">0%</strong>
+              </div>
+              <div class="wheel-bar"><div id="bar-rl" class="wheel-fill"></div></div>
+              <p id="dir-rl" class="wheel-direction">Idle</p>
+            </article>
+
+            <article class="wheel wheel-rr">
+              <div class="wheel-header">
+                <span>Rear Right</span>
+                <strong id="label-rr">0%</strong>
+              </div>
+              <div class="wheel-bar"><div id="bar-rr" class="wheel-fill"></div></div>
+              <p id="dir-rr" class="wheel-direction">Idle</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="formula-strip">
+          <code id="mixFormula">left = throttle + turn, right = throttle - turn</code>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
