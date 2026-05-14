@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot name="rhylon_car">
+  <material name="slate">
+    <color rgba="0.22 0.31 0.39 1.0"/>
+  </material>
+  <material name="amber">
+    <color rgba="0.92 0.69 0.21 1.0"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.045" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.26 0.19 0.05"/>
+      </geometry>
+      <material name="slate"/>
+    </visual>
+  </link>
+
+  <link name="camera_tower">
+    <visual>
+      <origin xyz="0.09 0 0.11" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.10"/>
+      </geometry>
+      <material name="amber"/>
+    </visual>
+  </link>
+
+  <joint name="camera_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_tower"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="front_left_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.016"/>
+      </geometry>
+      <material name="amber"/>
+    </visual>
+  </link>
+
+  <link name="front_right_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.016"/>
+      </geometry>
+      <material name="amber"/>
+    </visual>
+  </link>
+
+  <link name="rear_left_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.016"/>
+      </geometry>
+      <material name="amber"/>
+    </visual>
+  </link>
+
+  <link name="rear_right_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.024" length="0.016"/>
+      </geometry>
+      <material name="amber"/>
+    </visual>
+  </link>
+
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0.11 0.10 0.024" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="0.11 -0.10 0.024" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+    <origin xyz="-0.11 0.10 0.024" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+    <origin xyz="-0.11 -0.10 0.024" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+</robot>
