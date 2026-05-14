@@ -1,8 +1,8 @@
 import math
 
 import rclpy
-from geometry_msgs.msg import Quaternion, TransformStamped, Twist
-from nav_msgs.msg import Odometry
+from geometry_msgs.msg import PoseStamped, Quaternion, TransformStamped, Twist
+from nav_msgs.msg import Odometry, Path
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Bool, Float32MultiArray
@@ -52,10 +52,13 @@ class RhylonSimBase(Node):
         self.create_subscription(Bool, "/rhylon/estop", self.estop_callback, 10)
 
         self.odom_pub = self.create_publisher(Odometry, "/odom", 10)
+        self.path_pub = self.create_publisher(Path, "/path", 10)
         self.joint_pub = self.create_publisher(JointState, "/joint_states", 10)
         self.motor_pub = self.create_publisher(Float32MultiArray, "/rhylon/motor_states", 10)
         self.marker_pub = self.create_publisher(MarkerArray, "/rhylon/markers", 10)
         self.tf_broadcaster = TransformBroadcaster(self)
+        self.path_msg = Path()
+        self.path_msg.header.frame_id = "odom"
 
         self.create_timer(1.0 / self.publish_rate_hz, self.update)
         self.get_logger().info("Rhylon simulated base ready")
@@ -109,6 +112,16 @@ class RhylonSimBase(Node):
         odom.twist.twist = self.cmd if not self.estop else Twist()
         self.odom_pub.publish(odom)
 
+        pose = PoseStamped()
+        pose.header.stamp = stamp
+        pose.header.frame_id = "odom"
+        pose.pose = odom.pose.pose
+        self.path_msg.header.stamp = stamp
+        self.path_msg.poses.append(pose)
+        if len(self.path_msg.poses) > 400:
+            self.path_msg.poses = self.path_msg.poses[-400:]
+        self.path_pub.publish(self.path_msg)
+
     def publish_joints(self, stamp, wheel_mix: tuple[float, float, float, float], dt: float) -> None:
         names = list(self.wheel_positions.keys())
         wheel_speed_scale = 9.0
@@ -156,6 +169,42 @@ class RhylonSimBase(Node):
             marker.color.b = 0.25
             marker.text = f"{label} {mix:+.2f}"
             marker_array.markers.append(marker)
+
+        wheel_names = tuple(self.wheel_positions.keys())
+        for marker_id, (wheel_name, pos, mix) in enumerate(zip(wheel_names, positions, wheel_mix), start=10):
+            angle = self.wheel_positions[wheel_name]
+            spoke = Marker()
+            spoke.header.stamp = stamp
+            spoke.header.frame_id = "base_link"
+            spoke.ns = "rhylon_wheel_spin"
+            spoke.id = marker_id
+            spoke.type = Marker.LINE_LIST
+            spoke.action = Marker.ADD
+            spoke.scale.x = 0.008
+            spoke.color.a = 1.0
+            spoke.color.r = 0.96 if mix < 0.0 else 0.15
+            spoke.color.g = 0.92 if mix >= 0.0 else 0.28
+            spoke.color.b = 1.0
+
+            center_x, center_y, center_z = pos
+            radius = 0.03
+            for phase in (0.0, math.pi / 2.0):
+                theta = angle + phase
+                x1 = center_x + radius * math.cos(theta)
+                z1 = center_z + radius * math.sin(theta)
+                x2 = center_x - radius * math.cos(theta)
+                z2 = center_z - radius * math.sin(theta)
+
+                p1 = type(marker.pose.position)()
+                p1.x = x1
+                p1.y = center_y
+                p1.z = z1
+                p2 = type(marker.pose.position)()
+                p2.x = x2
+                p2.y = center_y
+                p2.z = z2
+                spoke.points.extend([p1, p2])
+            marker_array.markers.append(spoke)
 
         arrow = Marker()
         arrow.header.stamp = stamp

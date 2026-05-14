@@ -29,6 +29,11 @@ Visualization Manager:
       Name: Odom
       Topic:
         Value: /odom
+    - Class: rviz_default_plugins/Path
+      Enabled: true
+      Name: Path
+      Topic:
+        Value: /path
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
       Name: MotorMarkers
